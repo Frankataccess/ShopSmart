@@ -22,7 +22,46 @@ def helpCmdFunction():
 
 
 def addCmdFunction():
-    return "addCmdFunction works!"
+
+    while True:
+
+        shopping_list = {}
+
+        # * accepts input for shopping item
+
+        item_input = input("Enter an Item: ")
+
+        # * if statement to check if the number of characters entered is more than 30
+        if len(item_input) > 30:
+            print("You can't have more than 30 characters per item")
+
+            # ? The continue statement in Python is used to skip the current iteration of a loop (usually a for or while loop) and move to the next iteration.
+            print()
+            continue
+        break
+
+    while True:
+
+        # * try block to handle a valueError incase we get one
+        try:
+            # * accepts input for price of item
+
+            item_price_input = float(input("Enter the price of the item: £"))
+            print()
+            break  # Exit the loop if a valid price is entered
+
+        # * except block which handles the value error
+
+        except ValueError:
+            print("Please enter a valid numeric price.")
+            print()
+
+    shopping_list[item_input] = item_price_input
+
+    print("See your shopping list below")
+    print()
+
+    return shopping_list
 
 
 # ! Function to handle commands
