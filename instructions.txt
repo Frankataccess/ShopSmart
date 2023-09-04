@@ -1,0 +1,4 @@
+"ADD" to add an item
+"REMOVE" to remove an item
+"VIEW" to view shopping list
+"COMMANDS" to view these instructions 
