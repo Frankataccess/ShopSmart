@@ -9,6 +9,9 @@ def displayInstructions():
         return file.read()
 
 
+print(displayInstructions())
+
+
 #! Function to handle >HELP command
 
 def helpCmdFunction():
@@ -18,10 +21,10 @@ def helpCmdFunction():
     print("\n")
     return instructions_func
 
-#! Function to handle >ADD command
-
 
 shopping_list = {}
+
+#! Function to handle >ADD command
 
 
 def addCmdFunction(shopping_list):
@@ -57,6 +60,7 @@ def addCmdFunction(shopping_list):
             print("Please enter a valid numeric price.")
             print()
 
+    # * adding the shopping list item and price key-value pairs to the dictionary
     shopping_list[item_input] = item_price_input
 
     print("See your shopping list below")
@@ -84,7 +88,17 @@ def removeCmdFunction(shopping_list):
             print()
             continue
 
-# ! Function to handle commands
+#! Function to handle >TOTAL command
+
+
+def totalCmdFunction(shopping_list):
+
+    #! sum() function to add up the values
+    total = sum(shopping_list.values())
+
+    return (f"Total price: £{total}")
+
+#!  Function to handle ALL commands
 
 
 def handleCommands():
@@ -95,24 +109,24 @@ def handleCommands():
     while True:
         user_cmd_input = input("> ").upper()
 
-        # * if statement to check if the command the user typed is in the list
+        #! if statement to check if the command the user typed is in the list
         if user_cmd_input not in allowed_commands:
             print("Command not recognised (Type \"HELP\" to see list of commands)")
             print("\n")
 
-        # !if statement to activate the function that handles the "HELP" command (helpCmdFunction)
+        #! if statement to call the function that handles the "HELP" command (helpCmdFunction)
 
         if user_cmd_input == "HELP":
             print(helpCmdFunction())
             print("\n")
 
-        # !if statement to activate the function that handles the "ADD" command (addCmdFunction)
+        #! if statement to call the function that handles the "ADD" command (addCmdFunction)
 
         if user_cmd_input == "ADD":
             print(addCmdFunction(shopping_list))
             print("\n")
 
-        # !if statement to activate the function that handles the "ADD" command (addCmdFunction)
+        #! if statement to call the function that handles the "REMOVE" command (removeCmdFunction)
 
         if user_cmd_input == "REMOVE":
             # * if statement to print an error message if the user tries to remove an item from an empty shopping list
@@ -125,16 +139,40 @@ def handleCommands():
             print(removeCmdFunction(shopping_list))
             print("\n")
 
-        # !if statement to activate the function that handles the "QUIT" command
+        #! if statement to Handle the "VIEW" command
 
-        # * if statement to activate the function that handle the "QUIT" by calling sys.exit
+        if user_cmd_input == "VIEW":
+
+            # * if statement to handle print an error when the user types in view when there's nothing in the shopping list
+            if not shopping_list:
+
+                # todo: put this in a separate function
+
+                print(
+                    "There's nothing in the shopping list to view (Type \"ADD\" to add an item to the list)")
+                print()
+                continue
+
+            print("Here are your items so far:")
+            print()
+            print(shopping_list)
+
+        #! if statement to call the function that handles the "TOTAL" command
+
+        if user_cmd_input == "TOTAL":
+
+            if not shopping_list:
+                print(
+                    "There's nothing in the shopping list to add up (Type \"ADD\" to add an item and it's price to the list)")
+                print()
+                continue
+            print(totalCmdFunction(shopping_list))
+
+        #! if statement to call the function that handles the "QUIT" command
         if user_cmd_input == "QUIT":
+
+            # * if statement to exit the program by calling sys.exit
             sys.exit("Okay, until next time")
 
 
 print(handleCommands())
-
-"""
-what if the user adds an item that's not in the shopping list?
-
-"""

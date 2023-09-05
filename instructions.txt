@@ -1,6 +1,6 @@
 "ADD" to add an item
 "REMOVE" to remove an item
 "VIEW" to view shopping list
-"TOTAL" to view the total of the items in the list
+"TOTAL" to view the total price of the items in the list
 "HELP" to view these instructions 
 "QUIT" to quit the application
