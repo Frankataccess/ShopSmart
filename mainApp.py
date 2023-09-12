@@ -10,6 +10,7 @@ def displayInstructions():
 
 
 print(displayInstructions())
+print("\n")
 
 
 #! Function to handle >HELP command
